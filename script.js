@@ -40,16 +40,31 @@ function numeric_btn_press(number)
   else
   {
     result_Display.innerText = '';
-    result_Display.innerText += number;
+    result_Display.innerText =+number;
   
     if (operation === '+')
     {
-      answer = result + parseInt(result_Display.innerText);
+      result = result + parseInt(result_Display.innerText);
     }
   
     else if (operation === '-')
     {
-      answer = result - parseInt(result_Display.innerText);
+      result = result - parseInt(result_Display.innerText);
+    }
+
+    else if (operation === 'x')
+    {
+      result = result * parseInt(result_Display.innerText);
+    }
+
+    else if (operation === 'x')
+    {
+      result = result * parseInt(result_Display.innerText);
+    }
+
+    else if (operation === '÷')
+    {
+      result = result / parseInt(result_Display.innerText);
     }
 
     operation = '';
@@ -72,13 +87,26 @@ function set_operation_addition()
 function set_operation_deduction()
 {
   operation = '-';
-  console.log('pressed +')
+  console.log('pressed -')
+}
+
+function set_operation_multiplication()
+{
+  operation = 'x';
+  console.log('pressed x')
+}
+
+function set_operation_division()
+{
+  operation = '÷'
+  console.log('pressed ÷')
+
 }
 
 function execute_operation()
 {
   operation = '=';
-  result_Display.innerText = answer;
+  result_Display.innerText = result;
 }
 
 // create an input area to store all the number buttons.
@@ -112,6 +140,18 @@ for (number_icon of number_pad)
   {
     number_btn.addEventListener('click', record_User_Input);
     number_btn.addEventListener('click', set_operation_deduction);
+  }
+
+  else if (number_icon === 'x')
+  {
+    number_btn.addEventListener('click', record_User_Input);
+    number_btn.addEventListener('click', set_operation_multiplication);
+  }
+
+  else if (number_icon === '÷')
+  {
+    number_btn.addEventListener('click', record_User_Input);
+    number_btn.addEventListener('click', set_operation_division);
   }
 
 
